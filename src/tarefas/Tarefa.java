@@ -42,12 +42,16 @@ public class Tarefa {
         return dataDeTermino;
     }
 
-    public void setDataDeTermino(LocalDate dataDeTermino) {
-        this.dataDeTermino = dataDeTermino;
+    public void setDataDeTermino(String dataDeTermino) {
+        this.dataDeTermino = LocalDate.parse(dataDeTermino, formatter);
     }
 
     public int getPrioridade() {
         return prioridade;
+    }
+
+    public void setPrioridade(int prioridade) {
+        this.prioridade = prioridade;
     }
 
     public String getCategoria() {
