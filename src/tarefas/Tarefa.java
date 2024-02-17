@@ -10,7 +10,7 @@ public class Tarefa {
     private LocalDate dataDeTermino;
     private int prioridade;
     private String categoria;
-    private String status;
+    private StatusTarefa status;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Tarefa(String nome, String descricao, String dataDeTermino, int prioridade, String categoria) {
@@ -19,19 +19,31 @@ public class Tarefa {
         this.dataDeTermino = LocalDate.parse(dataDeTermino, formatter);
         this.prioridade = prioridade;
         this.categoria = categoria;
-        this.status = "ToDo";
+        this.status = StatusTarefa.TODO;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getDescricao() {
         return descricao;
     }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public LocalDate getDataDeTermino() {
         return dataDeTermino;
+    }
+
+    public void setDataDeTermino(LocalDate dataDeTermino) {
+        this.dataDeTermino = dataDeTermino;
     }
 
     public int getPrioridade() {
@@ -46,11 +58,11 @@ public class Tarefa {
         this.categoria = categoria;
     }
 
-    public String getStatus() {
-        return this.status;
+    public StatusTarefa getStatus() {
+        return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusTarefa status) {
         this.status = status;
     }
 
@@ -58,24 +70,17 @@ public class Tarefa {
     public String toString() {
         return "Tarefa{" +
                 "Nome: " + nome +
-                ", Descricao: " + descricao +
-                ", DataDeTermino: " + dataDeTermino +
+                ", Descrição: " + descricao +
+                ", Data do Término: " + dataDeTermino +
                 ", Prioridade: " + prioridade +
                 ", Categoria: " + categoria +
                 ", Status: " + status +
                 '}';
     }
+}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tarefa tarefa = (Tarefa) o;
-        return Objects.equals(categoria, tarefa.categoria) && Objects.equals(status, tarefa.status);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(categoria, status);
-    }
+enum StatusTarefa{
+    TODO,
+    DOING,
+    DONE
 }
