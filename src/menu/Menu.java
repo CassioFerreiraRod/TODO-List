@@ -16,7 +16,8 @@ public class Menu {
             System.out.println("1. Criar Tarefa");
             System.out.println("2. Listar Tarefa");
             System.out.println("3. Excluir Tarefa");
-            System.out.println("4. Para sair");
+            System.out.println("4. Editar Tarefa");
+            System.out.println("5. Para sair");
             entrada = scanner.nextInt();
             switch (entrada){
                 case 1:
@@ -29,6 +30,9 @@ public class Menu {
                     listaDeTarefas.excluirTarefas();
                     break;
                 case 4:
+                    listaDeTarefas.editarTarefa();
+                    break;
+                case 5:
                     System.out.println("Saindo...");
                     break;
                 default:
@@ -36,6 +40,6 @@ public class Menu {
                     break;
             }
 
-        } while (entrada !=4);
+        } while (entrada !=5);
     }
 }
