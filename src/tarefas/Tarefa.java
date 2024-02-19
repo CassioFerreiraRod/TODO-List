@@ -2,7 +2,6 @@ package tarefas;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public class Tarefa {
     private String nome;

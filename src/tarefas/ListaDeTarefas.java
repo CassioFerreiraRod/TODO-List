@@ -123,7 +123,7 @@ public class ListaDeTarefas {
 
     private void listarPorPrioridade() {
         System.out.println("Digite o nível de prioridade que deseja (1-5)");
-        Integer prioridade = new Scanner(System.in).nextInt();
+        int prioridade = new Scanner(System.in).nextInt();
         List<Tarefa> tarefasPorPrioridade = new ArrayList<>();
         if (!listaTarefa.isEmpty()) {
             listaTarefa.sort(Comparator.comparingInt(Tarefa::getPrioridade).reversed());
@@ -168,10 +168,10 @@ public class ListaDeTarefas {
         listarTodasTarefas();
         System.out.println("Digite o nome da tarefa que deseja editar: ");
         String entrada = new Scanner(System.in).nextLine();
-        Tarefa tarefaParaEdição = null;
+        Tarefa tarefaParaEdicao = null;
         for (Tarefa tarefa : listaTarefa) {
             if (tarefa.getNome().equalsIgnoreCase(entrada)) {
-                tarefaParaEdição = tarefa;
+                tarefaParaEdicao = tarefa;
             }
         }
         int opcao;
@@ -189,31 +189,41 @@ public class ListaDeTarefas {
             case 1:
                 System.out.println("Digite o novo nome: ");
                 String novoNome = new Scanner(System.in).nextLine();
-                tarefaParaEdição.setNome(novoNome);
+                if (tarefaParaEdicao != null) {
+                    tarefaParaEdicao.setNome(novoNome);
+                }
                 System.out.println("Tarefa editada");
                 break;
             case 2:
-                System.out.println("Digite o nova descrião: ");
+                System.out.println("Digite a nova descrião: ");
                 String novaDescricao = new Scanner(System.in).nextLine();
-                tarefaParaEdição.setDescricao(novaDescricao);
+                if (tarefaParaEdicao != null) {
+                    tarefaParaEdicao.setDescricao(novaDescricao);
+                }
                 System.out.println("Tarefa editada");
                 break;
             case 3:
-                System.out.println("Digite o nova data (dd/MM/yyyy): ");
+                System.out.println("Digite a nova data (dd/MM/yyyy): ");
                 String navaData = new Scanner(System.in).nextLine();
-                tarefaParaEdição.setDataDeTermino(navaData);
+                if (tarefaParaEdicao != null) {
+                    tarefaParaEdicao.setDataDeTermino(navaData);
+                }
                 System.out.println("Tarefa editada");
                 break;
             case 4:
-                System.out.println("Digite o nova prioridade: ");
+                System.out.println("Digite a nova prioridade: ");
                 int novaPrioridade = new Scanner(System.in).nextInt();
-                tarefaParaEdição.setPrioridade(novaPrioridade);
+                if (tarefaParaEdicao != null) {
+                    tarefaParaEdicao.setPrioridade(novaPrioridade);
+                }
                 System.out.println("Tarefa editada");
                 break;
             case 5:
-                System.out.println("Digite o nova categoria: ");
+                System.out.println("Digite a nova categoria: ");
                 String novaCategoria = new Scanner(System.in).nextLine();
-                tarefaParaEdição.setCategoria(novaCategoria);
+                if (tarefaParaEdicao != null) {
+                    tarefaParaEdicao.setCategoria(novaCategoria);
+                }
                 System.out.println("Tarefa editada");
                 break;
             case 6:
@@ -221,17 +231,19 @@ public class ListaDeTarefas {
                 String novoStatus = new Scanner(System.in).nextLine().toUpperCase();
                 try {
                     StatusTarefa statusTarefa = StatusTarefa.valueOf(novoStatus);
-                    tarefaParaEdição.setStatus(statusTarefa);
+                    if (tarefaParaEdicao != null) {
+                        tarefaParaEdicao.setStatus(statusTarefa);
+                    }
                     System.out.println("Tarefa editada");
                 } catch (IllegalArgumentException e) {
-                    System.out.println("Opção '" + novoStatus + "' inválida.");;
+                    System.out.println("Opção '" + novoStatus + "' inválida.");
                 }
                 break;
             default:
                 System.out.println("Opção inválida!");
                 break;
         }
-        atualizaTarefa(tarefaParaEdição);
+        atualizaTarefa(tarefaParaEdicao);
 
     }
     private void atualizaTarefa(Tarefa tarefaAtualizada) {
