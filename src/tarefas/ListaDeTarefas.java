@@ -169,85 +169,95 @@ public class ListaDeTarefas {
         System.out.println("Digite o nome da tarefa que deseja editar: ");
         String entrada = new Scanner(System.in).nextLine();
         Tarefa tarefaParaEdicao = null;
-        for (Tarefa tarefa : listaTarefa) {
-            if (tarefa.getNome().equalsIgnoreCase(entrada)) {
-                tarefaParaEdicao = tarefa;
+        for (int i =0; i< listaTarefa.size(); i++) {
+            if (listaTarefa.get(i).getNome().equalsIgnoreCase(entrada)) {
+                for (Tarefa tarefa : listaTarefa) {
+                    if (tarefa.getNome().equalsIgnoreCase(entrada)) {
+                        tarefaParaEdicao = tarefa;
+                    }
+                }
+                int opcao;
+                System.out.println("O que deseja editar:");
+                System.out.println("1. Nome");
+                System.out.println("2. Descrição");
+                System.out.println("3. Data do término");
+                System.out.println("4. Prioridade");
+                System.out.println("5. Categoria");
+                System.out.println("6. Status");
+                Scanner scanner = new Scanner(System.in);
+                opcao = scanner.nextInt();
+
+                switch (opcao) {
+                    case 1:
+                        System.out.println("Digite o novo nome: ");
+                        String novoNome = new Scanner(System.in).nextLine();
+                        if (tarefaParaEdicao != null) {
+                            tarefaParaEdicao.setNome(novoNome);
+                        }
+                        System.out.println("Tarefa editada");
+                        break;
+                    case 2:
+                        System.out.println("Digite a nova descrião: ");
+                        String novaDescricao = new Scanner(System.in).nextLine();
+                        if (tarefaParaEdicao != null) {
+                            tarefaParaEdicao.setDescricao(novaDescricao);
+                        }
+                        System.out.println("Tarefa editada");
+                        break;
+                    case 3:
+                        System.out.println("Digite a nova data (dd/MM/yyyy): ");
+                        String navaData = new Scanner(System.in).nextLine();
+                        if (tarefaParaEdicao != null) {
+                            tarefaParaEdicao.setDataDeTermino(navaData);
+                        }
+                        System.out.println("Tarefa editada");
+                        break;
+                    case 4:
+                        System.out.println("Digite a nova prioridade: ");
+                        int novaPrioridade = new Scanner(System.in).nextInt();
+                        if (tarefaParaEdicao != null) {
+                            tarefaParaEdicao.setPrioridade(novaPrioridade);
+                        }
+                        System.out.println("Tarefa editada");
+                        break;
+                    case 5:
+                        System.out.println("Digite a nova categoria: ");
+                        String novaCategoria = new Scanner(System.in).nextLine();
+                        if (tarefaParaEdicao != null) {
+                            tarefaParaEdicao.setCategoria(novaCategoria);
+                        }
+                        System.out.println("Tarefa editada");
+                        break;
+                    case 6:
+                        System.out.println("Digite o novo status (ToDo, Doing, Done): ");
+                        String novoStatus = new Scanner(System.in).nextLine().toUpperCase();
+                        try {
+                            StatusTarefa statusTarefa = StatusTarefa.valueOf(novoStatus);
+                            if (tarefaParaEdicao != null) {
+                                tarefaParaEdicao.setStatus(statusTarefa);
+                            }
+                            System.out.println("Tarefa editada");
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Opção '" + novoStatus + "' inválida.");
+                        }
+                        break;
+                    default:
+                        System.out.println("Opção inválida!");
+                        break;
+                }
+                atualizaTarefa(tarefaParaEdicao);
+            } else {
+                System.out.println("Tarefa não encontrada");
             }
         }
-        int opcao;
-        System.out.println("O que deseja editar:");
-        System.out.println("1. Nome");
-        System.out.println("2. Descrição");
-        System.out.println("3. Data do término");
-        System.out.println("4. Prioridade");
-        System.out.println("5. Categoria");
-        System.out.println("6. Status");
-        Scanner scanner = new Scanner(System.in);
-        opcao = scanner.nextInt();
-
-        switch (opcao) {
-            case 1:
-                System.out.println("Digite o novo nome: ");
-                String novoNome = new Scanner(System.in).nextLine();
-                if (tarefaParaEdicao != null) {
-                    tarefaParaEdicao.setNome(novoNome);
-                }
-                System.out.println("Tarefa editada");
-                break;
-            case 2:
-                System.out.println("Digite a nova descrião: ");
-                String novaDescricao = new Scanner(System.in).nextLine();
-                if (tarefaParaEdicao != null) {
-                    tarefaParaEdicao.setDescricao(novaDescricao);
-                }
-                System.out.println("Tarefa editada");
-                break;
-            case 3:
-                System.out.println("Digite a nova data (dd/MM/yyyy): ");
-                String navaData = new Scanner(System.in).nextLine();
-                if (tarefaParaEdicao != null) {
-                    tarefaParaEdicao.setDataDeTermino(navaData);
-                }
-                System.out.println("Tarefa editada");
-                break;
-            case 4:
-                System.out.println("Digite a nova prioridade: ");
-                int novaPrioridade = new Scanner(System.in).nextInt();
-                if (tarefaParaEdicao != null) {
-                    tarefaParaEdicao.setPrioridade(novaPrioridade);
-                }
-                System.out.println("Tarefa editada");
-                break;
-            case 5:
-                System.out.println("Digite a nova categoria: ");
-                String novaCategoria = new Scanner(System.in).nextLine();
-                if (tarefaParaEdicao != null) {
-                    tarefaParaEdicao.setCategoria(novaCategoria);
-                }
-                System.out.println("Tarefa editada");
-                break;
-            case 6:
-                System.out.println("Digite o novo status (ToDo, Doing, Done): ");
-                String novoStatus = new Scanner(System.in).nextLine().toUpperCase();
-                try {
-                    StatusTarefa statusTarefa = StatusTarefa.valueOf(novoStatus);
-                    if (tarefaParaEdicao != null) {
-                        tarefaParaEdicao.setStatus(statusTarefa);
-                    }
-                    System.out.println("Tarefa editada");
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Opção '" + novoStatus + "' inválida.");
-                }
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                break;
-        }
-        atualizaTarefa(tarefaParaEdicao);
 
     }
     private void atualizaTarefa(Tarefa tarefaAtualizada) {
-        listaTarefa.removeIf(t -> t.getNome().equalsIgnoreCase(tarefaAtualizada.getNome()));
-        listaTarefa.add(tarefaAtualizada);
+        if (tarefaAtualizada != null) {
+            listaTarefa.removeIf(t -> t.getNome().equalsIgnoreCase(tarefaAtualizada.getNome()));
+            listaTarefa.add(tarefaAtualizada);
+        } else {
+            System.out.println("Tarefa não existe");
+        }
     }
 }
