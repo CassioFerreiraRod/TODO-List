@@ -142,10 +142,10 @@ public class ListaDeTarefas {
 
     public void excluirTarefas() {
         listarTodasTarefas();
-        System.out.println("Digite o nome da tarefa que deseja excluir: ");
-        String entrada = new Scanner(System.in).nextLine();
-        boolean encontrou = false;
         if (!listaTarefa.isEmpty()) {
+            System.out.println("Digite o nome da tarefa que deseja excluir: ");
+            String entrada = new Scanner(System.in).nextLine();
+            boolean encontrou = false;
             Iterator<Tarefa> iterator = listaTarefa.iterator();
             while (iterator.hasNext()) {
                 Tarefa tarefaAExcluir = iterator.next();
@@ -159,17 +159,18 @@ public class ListaDeTarefas {
             if (!encontrou) {
                 System.out.println("Não encontrado.");
             }
-        } else {
-            System.out.println("Nenhuma tarefa");
         }
     }
 
     public void editarTarefa() {
         listarTodasTarefas();
-        System.out.println("Digite o nome da tarefa que deseja editar: ");
-        String entrada = new Scanner(System.in).nextLine();
+        String entrada = null;
+        if (!listaTarefa.isEmpty()) {
+            System.out.println("Digite o nome da tarefa que deseja editar: ");
+            entrada = new Scanner(System.in).nextLine();
+        }
         Tarefa tarefaParaEdicao = null;
-        for (int i =0; i< listaTarefa.size(); i++) {
+        for (int i = 0; i < listaTarefa.size(); i++) {
             if (listaTarefa.get(i).getNome().equalsIgnoreCase(entrada)) {
                 for (Tarefa tarefa : listaTarefa) {
                     if (tarefa.getNome().equalsIgnoreCase(entrada)) {
@@ -252,6 +253,7 @@ public class ListaDeTarefas {
         }
 
     }
+
     private void atualizaTarefa(Tarefa tarefaAtualizada) {
         if (tarefaAtualizada != null) {
             listaTarefa.removeIf(t -> t.getNome().equalsIgnoreCase(tarefaAtualizada.getNome()));
