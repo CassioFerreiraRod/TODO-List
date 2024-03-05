@@ -22,17 +22,17 @@
         </header>
         <main>
             <form class="row">
-                <div class="col" id="nome">
-                  <input type="text" class="form-control" placeholder="Nome da Tarefa" aria-label="Nome Tarefa">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Nome da Tarefa" aria-label="Nome Tarefa" id="nome">
                 </div>
-                <div class="col" id="descricao">
-                  <input type="text" class="form-control" placeholder="Descrição da Tarefa" aria-label="Descricão Tarefa">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Descrição da Tarefa" aria-label="Descricão Tarefa" id="descricao">
                 </div>
-                <div class="col" id="dataTarefa">
-                    <input type="date" id="data" name="data" class="form-control">
+                <div class="col">
+                    <input type="date" id="data" name="data" class="form-control" id="dataTarefa">
                 </div>
-                <div class="col" id="prioridade">
-                  <select class="form-select" id="autoSizingSelect">
+                <div class="col">
+                  <select class="form-select" id="prioridade">
                     <option selected>Prioridade...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -41,16 +41,16 @@
                     <option value="5">5</option>
                   </select>
                 </div>
-                <div class="col-auto" id="categoria">
-                    <select class="form-select" id="autoSizingSelect">
+                <div class="col-auto">
+                    <select class="form-select" id="categoria">
                       <option selected>Categoria...</option>
                       <option value="1">Casa</option>
                       <option value="2">Trabalho</option>
                       <option value="3">Faculdade</option>
                     </select>
                   </div>
-                <div class="col-auto" id="status">
-                    <select class="form-select" id="autoSizingSelect">
+                <div class="col-auto" >
+                    <select class="form-select" id="status">
                       <option selected>Status...</option>
                       <option value="1">ToDo</option>
                       <option value="2">Doing</option>
@@ -61,7 +61,7 @@
                     <button class="btn btn-primary" type="button">Cria Tarefa</button>
                   </div>
               </form>
-              <table class="table table-dark table-hover mt-3" id="tarefas">
+              <table class="table table-striped mt-3" id="tarefas">
                   <tr>
                       <th>Nome</th>
                       <th>Descrição</th>
