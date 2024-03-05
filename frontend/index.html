@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>ToDo List</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <header>
+            <h1 class="bg-secondary-subtle p-2 text-center fs-2 text-muted">ToDo List</h1>
+        </header>
+        <main>
+            <form class="row">
+                <div class="col" id="nome">
+                  <input type="text" class="form-control" placeholder="Nome da Tarefa" aria-label="Nome Tarefa">
+                </div>
+                <div class="col" id="descricao">
+                  <input type="text" class="form-control" placeholder="Descrição da Tarefa" aria-label="Descricão Tarefa">
+                </div>
+                <div class="col" id="dataTarefa">
+                    <input type="date" id="data" name="data" class="form-control">
+                </div>
+                <div class="col" id="prioridade">
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected>Prioridade...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="col-auto" id="categoria">
+                    <select class="form-select" id="autoSizingSelect">
+                      <option selected>Categoria...</option>
+                      <option value="1">Casa</option>
+                      <option value="2">Trabalho</option>
+                      <option value="3">Faculdade</option>
+                    </select>
+                  </div>
+                <div class="col-auto" id="status">
+                    <select class="form-select" id="autoSizingSelect">
+                      <option selected>Status...</option>
+                      <option value="1">ToDo</option>
+                      <option value="2">Doing</option>
+                      <option value="3">Done</option>
+                    </select>
+                  </div>
+                  <div class="d-grid gap-2 d-md-block mt-3" id="botaoCriar">
+                    <button class="btn btn-primary" type="button">Cria Tarefa</button>
+                  </div>
+              </form>
+              <table class="table table-dark table-hover mt-3" id="tarefas">
+                  <tr>
+                      <th>Nome</th>
+                      <th>Descrição</th>
+                      <th>Data</th>
+                      <th>Prioridade</th>
+                      <th>Categoria</th>
+                      <th>Status</th>
+                  </tr>
+              </table>
+        </main>
+        <footer>
+            
+        </footer>
+        
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+
+        <script src="script.js"></script>
+    </body>
+</html>
